@@ -3,6 +3,7 @@
         <h1 class="text-center mb-4">Bienvenido {{nombrepart}}</h1>
         <h2 class="text-center mb-4">Centro Escolar Cantón Aguaje Escondido | 2025</h2>
 
+
         <div class="row">
             {% for candidate in candidates %}
             <div class="col-md-2 mb-4">
@@ -19,9 +20,7 @@
                                 class="btn btn-primary btn-lg"
                                 {% if voted %}disabled{% endif %}>
                             Votar
-                            <p>/vote/{{ candidate['id'] }}
-                                {{ url_for('vote') }}
-                            </p>
+                            <p>/vote/{{ candidate['id'] }}</p>
                         </button>
                     </div>
                     </form>
