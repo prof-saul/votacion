@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block body %}
+        <h1 class="text-center mb-4">Bienvenido {{nombrepart}}</h1>
+        <h2 class="text-center mb-4">Centro Escolar Cantón Aguaje Escondido | 2025</h2>
+        
+        {% if voted %}
+            <div class="alert alert-warning">Ya has votado!</div>
+            <form action="/reset" method="POST" class="text-center mb-4">
+                <button type="submit" class="btn btn-danger">Nueva Votación</button>
+            </form>
+        {% endif %}
+
+        <div class="row">
+            {% for candidate in candidates %}
+            <div class="col-md-2 mb-4">
+                <div class="card text-bg-dark border-dark">
+                    <img src="{{ url_for('static', filename='images/' + candidate['photo']) }}" 
+                         class="card-img-top rounded" 
+                         alt="{{ candidate['name'] }}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ candidate['name'] }}</h5>
+                    </div>
+                    <form action="/vote/{{ candidate['id'] }}" method="POST">
+                        <div class="d-grid gap-2">
+                        <button type="submit" 
+                                class="btn btn-primary btn-lg"
+                                {% if voted %}disabled{% endif %}>
+                            Votar
+                        </button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+<!--
+        <div class="text-center">
+            <a href="{{ url_for('results') }}" class="btn btn-success btn-lg">Ver Resultados</a>
+        </div>
+-->
+{% endblock %}

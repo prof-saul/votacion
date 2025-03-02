@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4>Sistema de Votación</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if error %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                        {% endif %}
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-success text-center">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label for="code" class="form-label">Ingresa tu código de votación:</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="code" 
+                                       name="code" 
+                                       required
+                                       placeholder="Escribe tu numero de NIE">
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Acceder</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

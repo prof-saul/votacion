@@ -1,0 +1,16 @@
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+.btn{
+    border-radius: 0 !important;
+}

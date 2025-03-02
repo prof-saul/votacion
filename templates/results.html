@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+        <h1 class="text-center mb-4">Resultados</h1>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Cargo</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Votos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candidate in candidates %}
+                <tr>
+                    <td>{{ candidate.get('position', 'Miembro') }}</td>
+                    <td>
+                        <img src="{{ url_for('static', filename='images/' + candidate['photo']) }}" 
+                             width="100" 
+                             alt="{{ candidate['name'] }}">
+                    </td>
+                    <td>{{ candidate['name'] }}</td>
+                    <td>{{ candidate['votes'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Volver a Votar</a>
+        </div>
+{% endblock %}
