@@ -20,12 +20,13 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ candidate['name'] }}</h5>
                     </div>
-                    <form action="vote/{{ candidate['id'] }}" method="POST">
+                    <form action="/vote/{{ candidate['id'] }}" method="POST">
                         <div class="d-grid gap-2">
                         <button type="submit" 
                                 class="btn btn-primary btn-lg"
                                 {% if voted %}disabled{% endif %}>
                             Votar
+                            <p>/vote/{{ candidate['id'] }}</p>
                         </button>
                     </div>
                     </form>
